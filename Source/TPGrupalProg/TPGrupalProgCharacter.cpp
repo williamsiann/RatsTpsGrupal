@@ -168,3 +168,8 @@ void ATPGrupalProgCharacter::HandleDeath()
 {
 	Destroy();
 }
+
+void ATPGrupalProgCharacter::AddItemHealth_Implementation(int HealthPoints)
+{
+	HealthComponent->IncreaseHealth(HealthPoints);
+}

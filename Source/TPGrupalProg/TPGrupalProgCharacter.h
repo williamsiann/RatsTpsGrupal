@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
+#include "Public/CollectHealthItem.h"
 #include "TPGrupalProgCharacter.generated.h"
 
 class USpringArmComponent;
@@ -19,7 +20,7 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
  *  Implements a controllable orbiting camera
  */
 UCLASS(abstract)
-class ATPGrupalProgCharacter : public ACharacter
+class ATPGrupalProgCharacter : public ACharacter, public ICollectHealthItem
 {
 	GENERATED_BODY()
 
@@ -101,6 +102,10 @@ public:
 
 	UFUNCTION()
 	void HandleDeath();
+
+	virtual void AddItemHealth_Implementation(int HealthPoints);
+
+
 
 public:
 
