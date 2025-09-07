@@ -16,6 +16,8 @@
 
 ATPGrupalProgCharacter::ATPGrupalProgCharacter()
 {
+	SetCanBeDamaged(true); // 
+
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 		
@@ -56,6 +58,7 @@ ATPGrupalProgCharacter::ATPGrupalProgCharacter()
 void ATPGrupalProgCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	SetCanBeDamaged(true);
 	if (HealthComponent)
 	{
 		// Suscripción a los eventos del componente
@@ -172,4 +175,21 @@ void ATPGrupalProgCharacter::HandleDeath()
 void ATPGrupalProgCharacter::AddItemHealth_Implementation(int HealthPoints)
 {
 	HealthComponent->IncreaseHealth(HealthPoints);
+}
+
+float ATPGrupalProgCharacter::TakeDamage(
+	float DamageAmount,
+	FDamageEvent const& DamageEvent,
+	AController* EventInstigator,
+	AActor* DamageCauser
+)
+{
+
+	Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	if (HealthComponent)
+	{
+		HealthComponent->DecreaseHealth(DamageAmount);
+	}
+
+	return DamageAmount;
 }
