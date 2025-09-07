@@ -91,11 +91,10 @@ public:
 	class UHealthComponent* HealthComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UI")
-	TSubclassOf<UUserWidget> HealthBarWidgetClass;
-
+	TSubclassOf<UHealthBar> HealthBarWidgetClass;
 
 	UPROPERTY()
-	class UHealthBar* HealthWidget;
+	UHealthBar* HealthWidget;
 
 	UFUNCTION()
 	void HandleLifeChanged(float Health, float MaxHealth);

@@ -75,6 +75,7 @@ void ATPGrupalProgCharacter::BeginPlay()
 			HealthWidget->AddToViewport();
 		}
 	}
+	
 }
 
 void ATPGrupalProgCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
